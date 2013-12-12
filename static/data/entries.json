@@ -84,6 +84,30 @@
 		}
 	},
 	{
+		"type" : "person",
+		"id" : "mirko",
+		"name" : "Mirko Lorenz",
+		"description" : "CEO • Data-journalist, Information Architect, Trainer",
+		"twitter" : "https://twitter.com/mirkolorenz",
+		"img"  : "images/mirko.png" ,
+		"geo" : {
+			"lon": 6.96028,
+			"lat": 50.93753
+		}
+	},
+	{
+		"type" : "person",
+		"id" : "cosmin",
+		"name" : "Cosmin Cabulea",
+		"description" : "Data-journalist, Developer, Trainer",
+		"twitter" : "https://twitter.com/pushthings4ward",
+		"img"  : "images/cosmin.png" ,
+		"geo" : {
+			"lon": 6.96028,
+			"lat": 50.93753
+		}
+	},
+	{
 		"type" : "company",
 		"name" : "Journalism++",
 		"description" : "Cologne",

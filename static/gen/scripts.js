@@ -737,6 +737,10 @@ network.Map = (function(_super) {
         if ((e.sticky != null) && e.sticky) {
           that.closeCircle(e, ui);
         } else if ((e.sticky != null) && !e.sticky) {
+          that.circles.each(function(d) {
+            return that.closeCircle(d, d3.select(this));
+          });
+          that.openCircle(e, ui, true);
           that.stickMembers(e);
         } else {
           that.closeCircle(e, ui);

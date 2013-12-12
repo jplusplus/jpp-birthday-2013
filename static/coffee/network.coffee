@@ -220,10 +220,12 @@ class network.Map extends Widget
 						if e.sticky? and e.sticky
 							that.closeCircle(e, ui)
 						else if e.sticky? and not e.sticky
+							that.circles.each((d) -> that.closeCircle(d, d3.select(this)))
+							that.openCircle(e, ui, true)
 							that.stickMembers(e)
 						else
 							that.closeCircle(e, ui)
-							# 
+
 						if that._previousOver == e
 							that.hideLegend(true)(e)
 					else
@@ -330,7 +332,6 @@ class network.Map extends Widget
 				,100)
 		)
 		
-
 	renderCountries: =>
 		that = this
 		@groupPaths.selectAll(".country")

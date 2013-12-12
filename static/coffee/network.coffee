@@ -308,6 +308,11 @@ class network.Map extends Widget
 				.removeClass("company person event")
 				.addClass(d.type)
 				.html(d.description || d.title || if d.id then "@#{d.id}" else false || d.name)
+			link = d.link || d.twitter || if d.github? then d.github.url else false || null
+			@uis.panel.find('.link')
+				.addClass(d.type)
+				.removeClass("company person event")
+				.html($("<a target=\"_blank\"/>").attr("href", link).html(link))
 			@uis.panel.find(".icone img").attr("src", "static/"+d.img)
 			$github = @uis.panel.find('.github')
 			if d.github?

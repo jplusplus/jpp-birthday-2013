@@ -176,7 +176,7 @@
 		"name" : "LocalFocus",
 		"description": "A news service for (regional) media organizations to make data driven news stories and interactive visualizations.",
 		"id"   : "localfocus",
-		"link" : "https://www.google.com/url?q=http://localfocus.nl/&usd=2&usg=ALhdy2_HInc0HZBkcgi0GD5hIdus01G7ug",
+		"link" : "http://localfocus.nl",
 		"twitter" : "https://twitter.com/LocalFocusNL",
 		"img": "images/lf.png",
 		"members" : ["jelle", "yordi", "eric"],

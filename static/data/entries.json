@@ -5,6 +5,7 @@
 		"name" : "Pierre Romera",
 		"description" : "CTO • Developer",
 		"img"  : "images/pirhoo.png" ,
+		"twitter" : "https://twitter.com/Pirhoo",
 		"geo" : {
 			"lon": 2.406004,
 			"lat": 48.731398

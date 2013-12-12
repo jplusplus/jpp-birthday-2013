@@ -1,0 +1,13 @@
+
+@font-face:
+	font-family: 'Dinl'
+	src: url('./fonts/dinl.eot')
+	font-weight: normal
+	font-style: normal
+
+.hidden:
+    display: none
+
+body:
+    font-family: 'Dinl', sans-serif
+    background-image: url('../images/bg.png')

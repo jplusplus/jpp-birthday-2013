@@ -1,0 +1,190 @@
+body:
+	margin  : 0
+	padding : 0
+	text-align:center
+
+a:
+	text-decoration:none
+	color:#f24405
+
+.logo:
+	margin:auto
+	width:360px
+	img:
+		width: 63px
+		float: left
+		margin-right:20px
+	text-align:left
+	font-size:0.8em
+
+.Map:
+	background-color: #F2F2F2
+	position:relative
+	.graticule:
+		fill             : none
+		stroke           : #777
+		stroke-width     : .5px
+		stroke-opacity   : .5
+
+	.country:
+		-webkit-transition : fill 0.25s linear
+		stroke             : #8F9092
+		stroke-width       : 1px
+		stroke-opacity     : 0.4
+		&:hover:
+			fill: #4C4747
+
+	.city:
+		font-size: 0.7em
+
+	.entity:
+		circle:
+			// fill               : #2B2B2B
+			//-webkit-transition : r,stroke,stroke-width  0.25s linear
+			stroke-width       : 2px
+			stroke             : #9F9F9F
+			&:hover:
+				fill: #616161
+		&.person circle:
+			stroke: #A8D8FF
+		&.company circle:
+			stroke: #FF7979
+		&.event circle:
+			stroke: #FFF845
+
+	.dialog:
+		background-color : green
+
+	.legend:
+		color: white
+
+		&.line:
+			stroke : white
+		&.text:
+			font-size:1em
+			fill : #FFFFFF
+			font-size: 1.2em
+			text-shadow: -1px 0 #2B2B2B, 0 1px #2B2B2B, 1px 0 #2B2B2B, 0 -1px #2B2B2B
+
+.Controls:
+	position: absolute
+	top: 5px
+	left: 2px
+	font-size: 0.8em
+	.control:
+		text-align:right
+		background-color: #F5F5F5
+		padding: 0px 5px
+		margin-top: 5px
+		cursor: pointer
+		-webkit-transition: "background-color .25s"
+		&.event: 
+			background-color: #FFF845
+		&.company: 
+			background-color: #FF7979
+		&.person: 
+			background-color: #A8D8FF
+	
+		&.close: 
+			background-color: #6D6D6D
+			color:white
+			margin-top:20px
+
+
+		&:hover:
+			background-color:#6D6D6D
+			color:white
+			&.close: 
+				background-color: #F5F5F5
+				color:black
+
+.Title:
+	overflow:hidden
+	//min-height: 100px
+	color: #f24405
+
+.primary.Map:
+	margin: 0 auto
+	margin-top: 20px
+	svg:
+		border: 2px solid #444444
+		background-color: #E7EAF7
+		.overlay:
+			fill: none
+			pointer-events: all
+
+	.Panel:
+		transition : opacity .55s
+		opacity: 1
+		background: "-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)))"
+		background: "-moz-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)))"
+		position: relative
+		//overflow : hidden
+		text-align: right
+		.wrapper:
+			position: absolute
+			bottom: 20px
+			width:auto
+			left: 20px
+			right:20px
+		*:
+			margin: 0px
+		//.title:
+		// 	&.person:
+		// 		text-shadow: 3px 0 #A8D8FF, 0 1px #A8D8FF, 1px 0 #A8D8FF, 0 -1px #A8D8FF
+		// 	&.company:
+		// 		text-shadow: 3px 0 #FF7979, 0 1px #FF7979, 1px 0 #FF7979, 0 -1px #FF7979
+		// 	&.event:
+		// 		text-shadow: 3px 0 #FFF845, 0 1px #FFF845, 1px 0 #FFF845, 0 -1px #FFF845
+		//.description:
+		// 	&.person:
+		// 		text-shadow: 1px 0 #A8D8FF, 0 1px #A8D8FF, 1px 0 #A8D8FF, 0 -1px #A8D8FF
+		// 	&.company:
+		// 		text-shadow: 1px 0 #FF7979, 0 1px #FF7979, 1px 0 #FF7979, 0 -1px #FF7979
+		// 	&.event:
+		// 		text-shadow: 1px 0 #FFF845, 0 1px #FFF845, 1px 0 #FFF845, 0 -1px #FFF845
+		.description:
+			text-align:left
+		.icone:
+			float:right
+			img:
+				width:60px
+				margin-left: 20px
+		.github:
+			bottom: 0px
+			position: absolute
+			text-align:left
+			font-size:1.3em
+			line-height:38px
+			img:
+				width:13%
+				vertical-align: top
+		&.hidden:
+			display: none
+			opacity: 0
+		&.top:
+			background: "-webkit-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)))"
+			background: "-moz-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)))"
+			.wrapper:
+				top: 20px
+				bottom: auto
+				.github:
+					top: 0px
+					bottom:auto
+					position: absolute
+					&:before:
+						content:"coucou"
+					img:
+						vertical-align: middle
+
+footer:
+	font-size:0.8em
+	strong:
+		font-weight: bold
+	hr.soften:
+		position: relative
+		height: 1px
+		margin: 40px 0
+		background-image: "-webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))"
+		background-image: "-moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))"
+		border: 0

@@ -596,7 +596,7 @@ network.Map = (function(_super) {
   Map.prototype.init_size = function() {
     var bounds, height, hscale, scale, vscale, width;
     width = $(window).width();
-    height = $(window).height() - this.ui.offset().top - $(".Title").height();
+    height = $(window).height() - this.ui.offset().top - ($(window).height() - $(".Title p").offset().top) - 30;
     if (width != null) {
       this.width = width;
       this.height = this.width * this.OPTIONS.map_ratio;

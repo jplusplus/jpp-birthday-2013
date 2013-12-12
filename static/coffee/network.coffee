@@ -97,7 +97,7 @@ class network.Map extends Widget
 	init_size: =>
 		# adjust things when the window size changes
 		width  = $(window).width()
-		height = $(window).height() - @ui.offset().top - $(".Title").height()
+		height = $(window).height() - @ui.offset().top - ($(window).height() - $(".Title p").offset().top) - 30
 		if width?
 			@width  = width
 			@height = @width * @OPTIONS.map_ratio

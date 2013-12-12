@@ -147,20 +147,6 @@ LINK_COLOR=#F24405
 			right:20px
 		*:
 			margin: 0px
-		//.title:
-		// 	&.person:
-		// 		text-shadow: 3px 0 $PERSON_COLOR, 0 1px $PERSON_COLOR, 1px 0 $PERSON_COLOR, 0 -1px $PERSON_COLOR
-		// 	&.company:
-		// 		text-shadow: 3px 0 $COMPANY_COLOR, 0 1px $COMPANY_COLOR, 1px 0 $COMPANY_COLOR, 0 -1px $COMPANY_COLOR
-		// 	&.event:
-		// 		text-shadow: 3px 0 $EVENT_COLOR, 0 1px $EVENT_COLOR, 1px 0 $EVENT_COLOR, 0 -1px $EVENT_COLOR
-		//.description:
-		// 	&.person:
-		// 		text-shadow: 1px 0 $PERSON_COLOR, 0 1px $PERSON_COLOR, 1px 0 $PERSON_COLOR, 0 -1px $PERSON_COLOR
-		// 	&.company:
-		// 		text-shadow: 1px 0 $COMPANY_COLOR, 0 1px $COMPANY_COLOR, 1px 0 $COMPANY_COLOR, 0 -1px $COMPANY_COLOR
-		// 	&.event:
-		// 		text-shadow: 1px 0 $EVENT_COLOR, 0 1px $EVENT_COLOR, 1px 0 $EVENT_COLOR, 0 -1px $EVENT_COLOR
 		.description:
 			text-align:left
 		.icone:

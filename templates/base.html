@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">{#  #}</meta>
+		<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css' />
+		{% assets filters="clevercss", output="gen/style.css", "ccss/base.ccss", "ccss/style.ccss" %}
+			<link type="text/css" rel="stylesheet" href="{{ ASSET_URL }}" media="all" />
+		{% endassets %}
+		<script type="text/javascript" src="{{url_for('static', filename='js/jquery200.js')}}">{# #}</script>
+	</head>
+
+	<body class="use-base">
+
+		<div class="logo"><div class=""><img src="{{url_for('static', filename='images/logo.png')}}"></div><h1><a href="/">Journalism++</a><br><small>Data-driven stories</small></h1></div>
+
+		{% block content %}{% endblock %}
+
+		<footer class="container">
+			<hr class="soften"/>
+				<div class="row tc">
+					<strong>Journalism++ </strong>&nbsp;|&nbsp;<a href="https://www.facebook.com/journalismplusplus" target="_blank">Facebook </a>&nbsp;|&nbsp;<a href="https://twitter.com/jplusplus_" target="_blank">Twitter </a>&nbsp;|&nbsp;<a href="https://github.com/jplusplus/" target="_blank">Github</a>
+				</div>
+		</footer>
+
+		{% assets output="gen/vendors.js", "js/d3.js", "js/topojson.js", "js/queue.js", "js/raf.js" %}
+			<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+		{% endassets %}
+
+		{% assets filters="coffeescript", output="gen/scripts.js", "coffee/widget.coffee", "coffee/network.coffee" %}
+			<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+		{% endassets %}
+
+	</body>
+</html>

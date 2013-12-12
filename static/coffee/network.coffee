@@ -420,10 +420,4 @@ class network.Map extends Widget
 		that = @
 		@circles.each((d) -> that.closeCircle(d, d3.select(this)))
 
-start = ->
-	$(window).load ()->
-		Widget.bindAll()
-
-start()
-
 # EOF

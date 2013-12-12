@@ -3,7 +3,6 @@
 		"type" : "person",
 		"id" : "pirhoo",
 		"name" : "Pierre Romera",
-		"github" : {"url":"https://github.com/Pirhoo", "followers": 46, "repos": 3},
 		"img"  : "images/pirhoo.png" ,
 		"geo" : {
 			"lon": 2.406004,
@@ -14,7 +13,6 @@
 		"type" : "person",
 		"id" : "paulloz",
 		"name" : "Paul Joannon",
-		"github" : {"url":"https://github.com/Paulloz", "followers": 15, "repos": 6},
 		"img"  : "images/paul.png" ,
 		"geo" : {
 			"lon": 2.406004,
@@ -25,7 +23,6 @@
 		"type" : "person",
 		"id" : "toutenrab",
 		"name" : "Pierre Bellon",
-		"github" : {"url":"https://github.com/", "followers": 10, "repos": 4},
 		"img"  : "images/toutenrab.png" ,
 		"geo" : {
 			"lon": 2.406004,
@@ -48,7 +45,6 @@
 		"name" : "Edouard Richard",
 		"img"  : "images/vied12.png",
 		"id"   : "vied12",
-		"github" : {"url":"https://github.com/vied12", "followers": 15, "repos": 10},
 		"geo" :{
 			"lon": 13.423653,
 			"lat": 52.473827
@@ -70,7 +66,6 @@
 		"description" : "Journaliste, Président de J++",
 		"id"   : "nkb",
 		"img"  : "images/nkb.png",
-		"github" : {"url":"https://github.com/n-kb", "followers": 17, "repos": 4},
 		"geo" :{
 			"lon": 13.423653,
 			"lat": 52.473827
@@ -91,7 +86,6 @@
 		"name" : "J++",
 		"description" : "Cologne",
 		"img" : "images/jpp.png",
-		"github" : {"url":"https://github.com/jplusplus/", "followers": "n/a", "repos": 20},
 		"link" : "",
 		"geo" : {
 			"lon": 6.960279,
@@ -104,7 +98,6 @@
 		"name" : "J++",
 		"description" : "Berlin",
 		"img" : "images/jpp.png",
-		"github" : {"url":"https://github.com/jplusplus/", "followers": "n/a", "repos": 20},
 		"link" : "",
 		"geo" :{
 			"lon": 13.423653,
@@ -117,7 +110,6 @@
 		"name" : "J++",
 		"img" : "images/jpp.png",
 		"description" : "Paris",
-		"github" : {"url":"https://github.com/jplusplus/", "followers": "n/a", "repos": 20},
 		"link" : "",
 		"geo" : {
 			"lon": 2.406004,
@@ -131,7 +123,6 @@
 		"img" : "images/jpp.png",
 		"description" : "Amsterdam",
 
-		"github" : {"url":"https://github.com/jplusplus/", "followers": "n/a", "repos": 20},
 		"link" : "",
 		"geo" : {
 			"lon": 4.893189,
@@ -166,7 +157,6 @@
 		"name" : "J++",
 		"description" : "Stockholm",
 		"img" : "images/jpp.png",
-		"github" : {"url":"https://github.com/jplusplus/", "followers": "n/a", "repos": 20},
 		"link" : "",
 		"geo" : {
 			"lon": 18.062835,

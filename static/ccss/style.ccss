@@ -120,7 +120,7 @@ a:
 		background: "-moz-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)))"
 		position: relative
 		//overflow : hidden
-		text-align: right
+		text-align: left
 		.wrapper:
 			position: absolute
 			bottom: 20px

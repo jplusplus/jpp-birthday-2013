@@ -962,7 +962,7 @@ network.Map = (function(_super) {
     this.viewEurope();
     this.closeAll();
     return this.circles.filter(function(d) {
-      return d.type === "company";
+      return d.type === "company" && d.name !== "Journalism++";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
     });

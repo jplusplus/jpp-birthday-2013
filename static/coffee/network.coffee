@@ -398,7 +398,7 @@ class network.Map extends Widget
 		that = @
 		@viewEurope()
 		@closeAll()
-		@circles.filter((d) -> d.type=="company").each((d) ->
+		@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
 

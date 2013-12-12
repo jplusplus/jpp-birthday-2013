@@ -8,12 +8,17 @@
 .hidden:
 	display: none
 
-body:
+h1, h2, h3:
 	font-family: 'Dinl', sans-serif
+
+body:
+	font-family: sans-serif
 	background-image: url('../images/bg.png')
 	margin  : 0
 	padding : 0
-	text-align:center
+
+.force-visible:
+	visibility:visible !important
 
 a:
 	text-decoration:none

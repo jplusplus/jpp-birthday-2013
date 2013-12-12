@@ -7,12 +7,40 @@
 		{% assets filters="clevercss", output="gen/style.css", "ccss/base.ccss", "ccss/style.ccss" %}
 			<link type="text/css" rel="stylesheet" href="{{ ASSET_URL }}" media="all" />
 		{% endassets %}
+
+		<link type="text/css" rel="stylesheet" href="http://d:3000/css/style.css" media="all" />
+		<link type="text/css" rel="stylesheet" href="http://d:3000/css/birthday-2012.css" media="all" />
+
 		<script type="text/javascript" src="{{url_for('static', filename='js/jquery200.js')}}">{# #}</script>
 	</head>
 
 	<body class="use-base">
 
-		<div class="logo"><div class=""><img src="{{url_for('static', filename='images/logo.png')}}"></div><h1><a href="/">Journalism++</a><br><small>Data-driven stories</small></h1></div>
+		<div class="container">
+			<header class="top20">
+				<div class="row">
+					<div class="span7">
+						<div class="logo">
+							<div class="left50 pull-left right30">
+								<img class="force-visible" src="{{url_for('static', filename='images/logo.png')}}">
+							</div>
+							<h1>
+								<a href="/">
+									Journalism++
+								</a><br />
+								<small>Data-driven stories</small>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div class="container">
+			<div class="left50 top20">
+        		<a href="/">← Back to the homepage!</a>
+        	</div>
+		</div>
 
 		{% block content %}{% endblock %}
 

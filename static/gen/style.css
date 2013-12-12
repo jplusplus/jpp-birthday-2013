@@ -9,30 +9,26 @@
   display: none;
 }
 
-body {
+h1,
+h2,
+h3 {
   font-family: Dinl, sans-serif;
+}
+
+body {
+  font-family: sans-serif;
   background-image: url('../images/bg.png');
   margin: 0;
   padding: 0;
-  text-align: center;
+}
+
+.force-visible {
+  visibility: visible !important;
 }
 
 a {
   text-decoration: none;
   color: #f24405;
-}
-
-.logo {
-  margin: auto;
-  width: 360px;
-  text-align: left;
-  font-size: 0.8em;
-}
-
-.logo img {
-  width: 63px;
-  float: left;
-  margin-right: 20px;
 }
 
 .Map {
@@ -48,10 +44,10 @@ a {
 
 .Map .country {
   -webkit-transition: fill 0.25s linear;
-  stroke: #363636;
+  stroke: #f28861;
   stroke-width: 1px;
   stroke-opacity: 0.4;
-  fill: #bebec9;
+  fill: #f28861;
 }
 
 .Map .city {
@@ -81,34 +77,6 @@ a {
 
 .Map .entity.event circle {
   stroke: #fff845;
-}
-
-.Map .legend .l {
-  float: left;
-}
-
-.Map .legend .l .circle {
-  background-color: black;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border: 2px solid black;
-  width: 8px;
-  height: 8px;
-}
-
-.Map .legend .l .circle.event {
-  border-color: #fff845;
-}
-
-.Map .legend .l .circle.person {
-  border-color: #a8d8ff;
-}
-
-.Map .legend .l .circle.company {
-  border-color: #ff7979;
 }
 
 .Controls {
@@ -162,11 +130,23 @@ a {
 
 .primary.Map {
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 .primary.Map svg {
-  border: 1px solid #444444;
+  -webkit-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -moz-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -moz-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -webkit-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -o-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -ms-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border: 5px solid #ffffff;
   background-color: white;
 }
 
@@ -175,12 +155,74 @@ a {
   pointer-events: all;
 }
 
+.primary.Map .legend {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+}
+
+.primary.Map .legend .l {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  height: 10px;
+  line-height: 10px;
+  background: white;
+  text-transform: uppercase;
+  font-size: 90%;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -moz-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -moz-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -webkit-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -o-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  -ms-box-shadow: 1px 1px 4px 0 #d9e0e2;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+}
+
+.primary.Map .legend .l:hover {
+  background: #eeeeee;
+}
+
+.primary.Map .legend .l .circle {
+  float: left;
+  margin-right: 10px;
+  background-color: black;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 2px solid black;
+  width: 8px;
+  height: 8px;
+}
+
+.primary.Map .legend .l .circle.event {
+  border-color: #fff845;
+}
+
+.primary.Map .legend .l .circle.person {
+  border-color: #a8d8ff;
+}
+
+.primary.Map .legend .l .circle.company {
+  border-color: #ff7979;
+}
+
 .primary.Map .Panel {
   transition: opacity .55s;
   opacity: 1;
   filter: alpha(opacity=100);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)));
-  background: -moz-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+  background: -moz-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
   position: relative;
   text-align: left;
 }
@@ -230,8 +272,8 @@ a {
 }
 
 .primary.Map .Panel.top {
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)));
-  background: -moz-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(240,240,240,1)), color-stop(100%,rgba(242,242,242,1)));
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+  background: -moz-gradient(linear, left bottom, left top, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
 }
 
 .primary.Map .Panel.top .wrapper {
@@ -251,21 +293,4 @@ a {
 
 .primary.Map .Panel.top .wrapper .github img {
   vertical-align: middle;
-}
-
-footer {
-  font-size: 0.8em;
-}
-
-footer strong {
-  font-weight: bold;
-}
-
-footer hr.soften {
-  position: relative;
-  height: 1px;
-  margin: 40px 0;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
-  border: 0;
 }

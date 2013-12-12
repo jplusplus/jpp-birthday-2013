@@ -34,17 +34,6 @@
 	},
 	{
 		"type" : "person",
-		"name" : "Mirko Lorenz",
-		"id"   : "mirko",
-		"twitter" : "https://twitter.com/mirkolorenz",
-		"img"   : "images/mirko.png",
-		"geo" : {
-			"lon": 6.960279,
-			"lat": 50.937531
-		}
-	},
-	{
-		"type" : "person",
 		"name" : "Edouard Richard",
 		"description" : "Developer",
 		"img"  : "images/vied12.png",

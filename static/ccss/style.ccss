@@ -14,7 +14,6 @@ PERSON_COLOR=#A8D8FF
 	font-size:0.8em
 
 .Map:
-	//background-color: #F2F2F2
 	position:relative
 	.graticule:
 		fill             : none
@@ -28,8 +27,8 @@ PERSON_COLOR=#A8D8FF
 		stroke-width       : 1px
 		stroke-opacity     : 0.4
 		fill               : #BEBEC9
-		&:hover:
-			fill: #98989B
+		// &:hover:
+		// 	fill: #98989B
 
 	.city:
 		font-size: 0.7em

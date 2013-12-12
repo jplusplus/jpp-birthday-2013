@@ -54,10 +54,6 @@ a {
   fill: #bebec9;
 }
 
-.Map .country:hover {
-  fill: #98989b;
-}
-
 .Map .city {
   font-size: 0.7em;
 }

@@ -76,12 +76,7 @@ class network.Map extends Widget
 
 		# Create projection
 		@projection = d3.geo.mercator()
-					# .clipAngle(90)
-					# .scale(300)
 					.rotate(@initialRotation)
-					# .clipAngle(450)
-					# .translate([680, 250])
-					# .translate([@width / 2, @height / 2])
 
 		# Create the globe path
 		@path = d3.geo.path().projection(@projection)
@@ -221,6 +216,7 @@ class network.Map extends Widget
 				.on("mouseup", (e,d) ->
 					ui   = d3.select(this)
 					open = e.radius == that.OPTIONS.big_radius
+					that.circles.each((d) -> that.closeCircle(d, d3.select(this)))
 					if open
 						if e.sticky? and e.sticky
 							that.closeCircle(e, ui)

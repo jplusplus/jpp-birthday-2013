@@ -736,6 +736,9 @@ network.Map = (function(_super) {
       var open, ui;
       ui = d3.select(this);
       open = e.radius === that.OPTIONS.big_radius;
+      that.circles.each(function(d) {
+        return that.closeCircle(d, d3.select(this));
+      });
       if (open) {
         if ((e.sticky != null) && e.sticky) {
           that.closeCircle(e, ui);

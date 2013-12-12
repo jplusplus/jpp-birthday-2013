@@ -234,10 +234,10 @@
 		"link" : "arte.tv",
 		"id"   : "arte",
 		"img"   : "images/arte.png",
-		"description" : "Development of the web documentary \"The counter-history of the Internets\"",
+		"description" : "Development of the web documentary \"The counter-history of the Internets\" and another one to come in 2014...",
 		"geo" : {
-			"lon": 2.406004,
-			"lat": 48.731398
+			"lon": 7.74788,
+			"lat": 48.58315
 		}
 	},
 	{

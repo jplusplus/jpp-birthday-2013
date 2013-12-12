@@ -119,12 +119,11 @@
 		},
 		"members" : ["pirhoo", "toutenrab", "paulloz"]
 	},
-		{
+	{
 		"type" : "company",
 		"name" : "Journalism++",
 		"img" : "images/jpp.png",
 		"description" : "Amsterdam",
-
 		"link" : "http://amsterdam.jplusplus.org/",
 		"geo" : {
 			"lon": 4.893189,
@@ -273,8 +272,8 @@
 			"lat": -13.254308
 		},
 		"members" : ["nkb"]
-	}
-	,{
+	},
+	{
 		"type" : "event",
 		"title" : "Singapore Digital Journalism World conference",
 		"description" : "Journalism++ was at the Singapore Digital Journalism World conference, where Nicolas Kayser-Bril held 2 keynotes to an audience of over 70 Asian journalists.",
@@ -287,8 +286,8 @@
 			"lat": 1.352083
 		},
 		"members" : ["nkb"]
-	}
-	,{
+	},
+	{
 		"type" : "event",
 		"title" : "4M Machrek conference",
 		"description" : "Journalism++ was at the 4M Machrek conference, where Nicolas Kayser-Bril held a keynote on business models for content in front of over 40 journalists and entrepreneurs from the Middle East.",
@@ -315,5 +314,59 @@
 			"lat": 27.700000
 		},
 		"members" : ["pirhoo"]
+	},
+	{
+		"type" : "event",
+		"title" : "DDJ Workshop",
+		"description" : "We did a workshop about data-driven journalism with journalists from WDR. In just one week we created a special webpage with charts. The key goal was to be be quick - and to learn.",
+		"location" : "Cologne, Germany",
+		"date" : "11/12/2013",
+		"link" : "http://data.wdr.de",
+		"img"   : "images/cologne-ws.png",
+		"geo" : {
+			"lon": 6.96028,
+			"lat": 50.93753
+		},
+		"members" : ["mirko"]
+	},
+	{
+		"type" : "event",
+		"title" : "Training in Norway",
+		"description" : "Jens Finnäs from J++ Stockholm is helping Norwegian journalists to get started with data journalism in a project arranged by NXT Media.",
+		"location" : "Trondheim, Norway",
+		"date" : "11/12/2013",
+		"link" : "http://nxtmedia.no/kamp-om-prisen-for-datajournalistikk/",
+		"img"   : "images/norway-ws.png",
+		"geo" : {
+			"lon": 10.39505,
+			"lat": 63.43051
+		},
+		"members" : ["jens"]
+	},
+	{
+		"type" : "event",
+		"title" : "J++ awarded at Media Hackday",
+		"description" : "J++ won the Guardian API prize at the WAN-IFRA Media Hackday in Berlin with the platform Broken Promises.",
+		"location" : "Berlin, Germany",
+		"date" : "19/09/2013",
+		"link" : "http://jplusplus.se/?p=213",
+		"img"   : "images/wanifra.png", 
+		"geo" : {
+			"lon": 13.423653,
+			"lat": 52.473827
+		},
+		"members" : ["pirhoo", "jens","erik","jordi","nkb"]
+	},
+	{
+		"type" : "company",
+		"title" : "We <3 Helsinki",
+		"description" : "J++ Stockholm has done numerous trainings in and projects in Finland with partners such as Helsingin Sanomat, Yle and Hufvudstadsbladet.",
+		"location" : "Helsinki, Finland",
+		"img"   : "images/helsinki.png", 
+		"geo" : {
+			"lon": 24.94102,
+			"lat": 60.17332
+		},
+		"members" : ["pirhoo", "jens","erik","jordi","nkb"]
 	}
 ]

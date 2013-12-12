@@ -113,7 +113,7 @@
 		"name" : "Jelle Kamsma",
 		"description" : "Datajournalist",
 		"twitter" : "http://twitter.com/ddjelle",
-		"img"  : "images/djelle.png" ,
+		"img"  : "images/ddjelle.png" ,
 		"geo" : {
 			"lon": 4.89517,
 			"lat": 52.37022
@@ -430,7 +430,7 @@
 	{
 		"type" : "event",
 		"title" : "J++ awarded at Media Hackday",
-		"description" : "J++ won the Guardian API prize at the WAN-IFRA Media Hackday in Berlin with the platform Broken Promises.",
+		"description" : "Journalism++ won the Guardian API prize at the WAN-IFRA Media Hackday in Berlin with the platform Broken Promises.",
 		"location" : "Berlin, Germany",
 		"date" : "19/09/2013",
 		"link" : "http://jplusplus.se/?p=213",
@@ -444,7 +444,7 @@
 	{
 		"type" : "company",
 		"title" : "We <3 Helsinki",
-		"description" : "J++ Stockholm has done numerous trainings in and projects in Finland with partners such as Helsingin Sanomat, Yle and Hufvudstadsbladet.",
+		"description" : "Journalism++ Stockholm has done numerous trainings in and projects in Finland with partners such as Helsingin Sanomat, Yle and Hufvudstadsbladet. Journalism++ Paris were finalists in the Uutisraivaaja contest.",
 		"location" : "Helsinki, Finland",
 		"img"   : "images/helsinki.png", 
 		"geo" : {

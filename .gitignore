@@ -1,6 +1,5 @@
 *.pyc
 venv/
-.env
 fabfile.py
 static/.webassets-cache/
 build/

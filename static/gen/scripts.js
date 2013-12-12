@@ -849,7 +849,6 @@ network.Map = (function(_super) {
       _this.uis.panel.css('display', 'block');
       _this.uis.panel.removeClass("hidden").find('.title').removeClass("company person event").addClass(d.type).html(d.name || d.title || d.description);
       _this.uis.panel.find('.description').removeClass("company person event").addClass(d.type).html(d.description || d.title || (d.id ? "@" + d.id : false || d.name));
-      console.log(_this.uis.panel.find('.description'), d.description || d.title || (d.id ? "@" + d.id : false || d.name));
       _this.uis.panel.find(".icone img").attr("src", "static/" + d.img);
       $github = _this.uis.panel.find('.github');
       if (d.github != null) {

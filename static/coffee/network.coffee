@@ -310,7 +310,6 @@ class network.Map extends Widget
 				.removeClass("company person event")
 				.addClass(d.type)
 				.html(d.description || d.title || if d.id then "@#{d.id}" else false || d.name)
-			console.log @uis.panel.find('.description'), d.description || d.title || if d.id then "@#{d.id}" else false || d.name
 			@uis.panel.find(".icone img").attr("src", "static/"+d.img)
 			$github = @uis.panel.find('.github')
 			if d.github?

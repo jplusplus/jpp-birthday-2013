@@ -187,6 +187,10 @@ a {
   -ms-border-radius: 2px;
 }
 
+.primary.Map .legend .l.clicked {
+  background: #eeeeee;
+}
+
 .primary.Map .legend .l:hover {
   background: #eeeeee;
 }

@@ -944,52 +944,84 @@ network.Map = (function(_super) {
     return this.currentView = "europe";
   };
 
-  Map.prototype.personclick = function() {
+  Map.prototype.personclick = function(e) {
     var that;
     that = this;
+    $(".l").removeClass("clicked");
+    if (this.current_filter === "person") {
+      this.closeAll();
+      this.current_filter = null;
+      return;
+    }
     this.viewEurope();
     this.closeAll();
-    return this.circles.filter(function(d) {
+    this.circles.filter(function(d) {
       return d.type === "person";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
     });
+    this.current_filter = "person";
+    return $(e.currentTarget).addClass("clicked");
   };
 
-  Map.prototype.companyclick = function() {
+  Map.prototype.companyclick = function(e) {
     var that;
     that = this;
+    $(".l").removeClass("clicked");
+    if (this.current_filter === "company") {
+      this.closeAll();
+      this.current_filter = null;
+      return;
+    }
     this.viewEurope();
     this.closeAll();
-    return this.circles.filter(function(d) {
+    this.circles.filter(function(d) {
       return d.type === "company" && d.name !== "Journalism++";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
     });
+    this.current_filter = "company";
+    return $(e.currentTarget).addClass("clicked");
   };
 
-  Map.prototype.eventclick = function() {
+  Map.prototype.eventclick = function(e) {
     var that;
     that = this;
+    $(".l").removeClass("clicked");
+    if (this.current_filter === "event") {
+      this.closeAll();
+      this.current_filter = null;
+      return;
+    }
     this.viewGlobal();
     this.closeAll();
-    return this.circles.filter(function(d) {
+    this.circles.filter(function(d) {
       return d.type === "event";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
     });
+    this.current_filter = "event";
+    return $(e.currentTarget).addClass("clicked");
   };
 
-  Map.prototype.jppclick = function() {
+  Map.prototype.jppclick = function(e) {
     var that;
     that = this;
+    $(".l").removeClass("clicked");
+    if (this.current_filter === "jpp") {
+      this.closeAll();
+      this.current_filter = null;
+      return;
+    }
     this.viewEurope();
     this.closeAll();
-    return this.circles.filter(function(d) {
+    this.circles.filter(function(d) {
       return d.type === "company" && d.name === "Journalism++";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this), true);
     });
+    this.current_filter = "jpp";
+    return $(e.currentTarget).addClass("clicked");
   };
 
   Map.prototype.allclick = function() {

@@ -386,37 +386,68 @@ class network.Map extends Widget
 			@animationRequest = requestAnimationFrame @move(null, @scale * 4, translate)
 		@currentView = "europe"
 
-	personclick: =>
+	personclick: (e) =>
 		that = @
+		$(".l").removeClass("clicked")
+		if @current_filter == "person"
+			@closeAll()
+			@current_filter = null
+			return 
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="person").each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
+		@current_filter = "person"
+		$(e.currentTarget).addClass("clicked")
 
-	companyclick: =>
+	companyclick: (e) =>
 		that = @
+		$(".l").removeClass("clicked")
+		if @current_filter == "company"
+			@closeAll()
+			@current_filter = null
+			return 
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
+		@current_filter = "company"
+		$(e.currentTarget).addClass("clicked")
 
-	eventclick: =>
+
+	eventclick: (e) =>
 		that = @
+		$(".l").removeClass("clicked")
+		if @current_filter == "event"
+			@closeAll()
+			@current_filter = null
+			return 
 		@viewGlobal()
 		@closeAll()
 		@circles.filter((d) -> d.type=="event").each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
+		@current_filter = "event"
+		$(e.currentTarget).addClass("clicked")
 
-	jppclick: =>
+
+	jppclick: (e) =>
 		that = @
+		$(".l").removeClass("clicked")
+		if @current_filter == "jpp"
+			@closeAll()
+			@current_filter = null
+			return 
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->
 			that.openCircle(d, d3.select(this), true)
 		)
+		@current_filter = "jpp"
+		$(e.currentTarget).addClass("clicked")
+
 
 	allclick: =>
 		that = @

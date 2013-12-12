@@ -737,6 +737,10 @@ network.Map = (function(_super) {
         if ((e.sticky != null) && e.sticky) {
           that.closeCircle(e, ui);
         } else if ((e.sticky != null) && !e.sticky) {
+          that.circles.each(function(d) {
+            return that.closeCircle(d, d3.select(this));
+          });
+          that.openCircle(e, ui, true);
           that.stickMembers(e);
         } else {
           that.closeCircle(e, ui);
@@ -836,7 +840,7 @@ network.Map = (function(_super) {
       blocked = false;
     }
     return (function(d, i) {
-      var $github;
+      var $github, link;
       _this.legendBlocked = blocked;
       clearTimeout(_this.hideLegendTimer);
       if (d.y > _this.height - _this.uis.panel.height()) {
@@ -849,6 +853,8 @@ network.Map = (function(_super) {
       _this.uis.panel.css('display', 'block');
       _this.uis.panel.removeClass("hidden").find('.title').removeClass("company person event").addClass(d.type).html(d.name || d.title || d.description);
       _this.uis.panel.find('.description').removeClass("company person event").addClass(d.type).html(d.description || d.title || (d.id ? "@" + d.id : false || d.name));
+      link = d.link || d.twitter || (d.github != null ? d.github.url : false || null);
+      _this.uis.panel.find('.link').addClass(d.type).removeClass("company person event").html($("<a target=\"_blank\"/>").attr("href", link).html(link));
       _this.uis.panel.find(".icone img").attr("src", "static/" + d.img);
       $github = _this.uis.panel.find('.github');
       if (d.github != null) {

@@ -173,6 +173,20 @@
 	},
 	{
 		"type" : "company",
+		"name" : "LocalFocus",
+		"description": "A news service for (regional) media organizations to make data driven news stories and interactive visualizations.",
+		"id"   : "localfocus",
+		"link" : "http://localfocus.nl",
+		"twitter" : "https://twitter.com/LocalFocusNL",
+		"img": "images/lf.png",
+		"members" : ["jelle", "yordi", "eric"],
+		"geo" : {
+			"lon": 4.893189,
+			"lat": 52.3731
+		}
+	},
+	{
+		"type" : "company",
 		"name" : "The Open Knowledge Foundation",
 		"id"   : "okf",
 		"link" : "",

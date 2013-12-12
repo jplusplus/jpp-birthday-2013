@@ -220,10 +220,12 @@ class network.Map extends Widget
 						if e.sticky? and e.sticky
 							that.closeCircle(e, ui)
 						else if e.sticky? and not e.sticky
+							that.circles.each((d) -> that.closeCircle(d, d3.select(this)))
+							that.openCircle(e, ui, true)
 							that.stickMembers(e)
 						else
 							that.closeCircle(e, ui)
-							# 
+
 						if that._previousOver == e
 							that.hideLegend(true)(e)
 					else
@@ -306,6 +308,11 @@ class network.Map extends Widget
 				.removeClass("company person event")
 				.addClass(d.type)
 				.html(d.description || d.title || if d.id then "@#{d.id}" else false || d.name)
+			link = d.link || d.twitter || if d.github? then d.github.url else false || null
+			@uis.panel.find('.link')
+				.addClass(d.type)
+				.removeClass("company person event")
+				.html($("<a target=\"_blank\"/>").attr("href", link).html(link))
 			@uis.panel.find(".icone img").attr("src", "static/"+d.img)
 			$github = @uis.panel.find('.github')
 			if d.github?
@@ -330,7 +337,6 @@ class network.Map extends Widget
 				,100)
 		)
 		
-
 	renderCountries: =>
 		that = this
 		@groupPaths.selectAll(".country")

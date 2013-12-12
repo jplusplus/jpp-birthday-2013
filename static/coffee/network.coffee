@@ -235,7 +235,7 @@ class network.Map extends Widget
 						that.openCircle(e, ui, true)
 						that.showLegend(true)(e)
 				)
-				.on("mouseover", (d) => if @_previousOver != d then @showLegend()(d); @_previousOver = d)
+				.on("mouseover", (d) => if @_previousOver != d and not @legendBlocked then @showLegend()(d); @_previousOver = d)
 				.on("mouseout", @hideLegend())
 
 		@circles.append('circle')

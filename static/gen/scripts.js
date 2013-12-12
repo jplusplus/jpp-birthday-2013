@@ -752,7 +752,7 @@ network.Map = (function(_super) {
         return that.showLegend(true)(e);
       }
     }).on("mouseover", function(d) {
-      if (_this._previousOver !== d) {
+      if (_this._previousOver !== d && !_this.legendBlocked) {
         _this.showLegend()(d);
         return _this._previousOver = d;
       }

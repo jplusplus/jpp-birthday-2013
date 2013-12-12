@@ -212,7 +212,8 @@
 		"geo" : {
 			"lon": 4.893189,
 			"lat": 52.3731
-		}
+		},
+		"members" : ["jelle", "yordi", "erik"]
 	},
 	{
 		"type" : "company",
@@ -248,7 +249,8 @@
 		"geo" : {
 			"lon": 18.062835,
 			"lat": 59.332261
-		}
+		},
+		"members" : ["jens", "peter"]
 	},
 	{
 		"type" : "company",

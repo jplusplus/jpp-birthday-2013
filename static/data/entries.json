@@ -144,6 +144,30 @@
 		}
 	},
 	{
+		"type" : "person",
+		"id" : "jens",
+		"name" : "Jens Finnäs",
+		"description" : "Journalist",
+		"twitter" : "http://twitter.com/jensfinnas",
+		"img"  : "images/jens.png" ,
+		"geo" : {
+			"lon": 18.06491,
+			"lat": 59.32893
+		}
+	},
+	{
+		"type" : "person",
+		"id" : "peter",
+		"name" : "Peter Grensund",
+		"description" : "Journalist",
+		"twitter" : "http://twitter.com/grensund",
+		"img"  : "images/peter.png" ,
+		"geo" : {
+			"lon": 18.06491,
+			"lat": 59.32893
+		}
+	},
+	{
 		"type" : "company",
 		"name" : "Journalism++",
 		"description" : "Cologne",

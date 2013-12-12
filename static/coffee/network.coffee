@@ -216,7 +216,6 @@ class network.Map extends Widget
 				.on("mouseup", (e,d) ->
 					ui   = d3.select(this)
 					open = e.radius == that.OPTIONS.big_radius
-					that.circles.each((d) -> that.closeCircle(d, d3.select(this)))
 					if open
 						if e.sticky? and e.sticky
 							that.closeCircle(e, ui)
@@ -228,6 +227,7 @@ class network.Map extends Widget
 						if that._previousOver == e
 							that.hideLegend(true)(e)
 					else
+						that.circles.each((d) -> that.closeCircle(d, d3.select(this)))
 						that.openCircle(e, ui, true)
 						that.showLegend(true)(e)
 				)
@@ -370,7 +370,7 @@ class network.Map extends Widget
 
 	viewGlobal: =>
 		if @currentView != "global"
-			@animationRequest = requestAnimationFrame @move(@initialRotation, null, null)
+			@animationRequest = requestAnimationFrame @move(@initialRotation, @scale, [@width / 2, @height / 2])
 		@currentView = "global"
 
 	viewEurope: =>
@@ -379,35 +379,10 @@ class network.Map extends Widget
 			translate[1] += 300
 			@animationRequest = requestAnimationFrame @move(null, @scale * 4, translate)
 		@currentView = "europe"
-		
-	ffctnclick: =>
-		that = @
-		@viewGlobal()
-		@closeAll()
-		@circles.filter((d) -> d.name=="FFunction").each((d) ->
-			that.openCircle(d, d3.select(this), true)
-		)
-
-	datastoryclick: =>
-		that = @
-		@viewGlobal()
-		@closeAll()
-		@circles.filter((d) -> d.title=="Data, récits & cie").each((d) ->
-			that.openCircle(d, d3.select(this), true)
-		)
-
-	jppclick: =>
-		that = @
-		@viewEurope()
-		@closeAll()
-		@animationRequest = requestAnimationFrame @move([0,-60], @width * 2.7, [400, 70])
-		@circles.filter((d) -> d.name=="J++").each((d) ->
-			that.openCircle(d, d3.select(this), true)
-		)
 
 	personclick: =>
 		that = @
-		@viewGlobal()
+		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="person").each((d) ->
 			that.openCircle(d, d3.select(this))
@@ -417,8 +392,7 @@ class network.Map extends Widget
 		that = @
 		@viewEurope()
 		@closeAll()
-		partners = ["dataninja", "wikileaks", "arte", "wedodata", 'okf']
-		@circles.filter((d) -> d.id in partners).each((d) ->
+		@circles.filter((d) -> d.type=="company").each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
 
@@ -445,9 +419,5 @@ start = ->
 		Widget.bindAll()
 
 start()
-
-
-
-# window.map = Widget.ensureWidget(".Map")
 
 # EOF

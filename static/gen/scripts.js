@@ -540,9 +540,6 @@ network.Map = (function(_super) {
     this.eventclick = __bind(this.eventclick, this);
     this.companyclick = __bind(this.companyclick, this);
     this.personclick = __bind(this.personclick, this);
-    this.jppclick = __bind(this.jppclick, this);
-    this.datastoryclick = __bind(this.datastoryclick, this);
-    this.ffctnclick = __bind(this.ffctnclick, this);
     this.viewEurope = __bind(this.viewEurope, this);
     this.viewGlobal = __bind(this.viewGlobal, this);
     this.move = __bind(this.move, this);
@@ -736,9 +733,6 @@ network.Map = (function(_super) {
       var open, ui;
       ui = d3.select(this);
       open = e.radius === that.OPTIONS.big_radius;
-      that.circles.each(function(d) {
-        return that.closeCircle(d, d3.select(this));
-      });
       if (open) {
         if ((e.sticky != null) && e.sticky) {
           that.closeCircle(e, ui);
@@ -751,6 +745,9 @@ network.Map = (function(_super) {
           return that.hideLegend(true)(e);
         }
       } else {
+        that.circles.each(function(d) {
+          return that.closeCircle(d, d3.select(this));
+        });
         that.openCircle(e, ui, true);
         return that.showLegend(true)(e);
       }
@@ -925,7 +922,7 @@ network.Map = (function(_super) {
 
   Map.prototype.viewGlobal = function() {
     if (this.currentView !== "global") {
-      this.animationRequest = requestAnimationFrame(this.move(this.initialRotation, null, null));
+      this.animationRequest = requestAnimationFrame(this.move(this.initialRotation, this.scale, [this.width / 2, this.height / 2]));
     }
     return this.currentView = "global";
   };
@@ -940,47 +937,10 @@ network.Map = (function(_super) {
     return this.currentView = "europe";
   };
 
-  Map.prototype.ffctnclick = function() {
-    var that;
-    that = this;
-    this.viewGlobal();
-    this.closeAll();
-    return this.circles.filter(function(d) {
-      return d.name === "FFunction";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this), true);
-    });
-  };
-
-  Map.prototype.datastoryclick = function() {
-    var that;
-    that = this;
-    this.viewGlobal();
-    this.closeAll();
-    return this.circles.filter(function(d) {
-      return d.title === "Data, récits & cie";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this), true);
-    });
-  };
-
-  Map.prototype.jppclick = function() {
-    var that;
-    that = this;
-    this.viewEurope();
-    this.closeAll();
-    this.animationRequest = requestAnimationFrame(this.move([0, -60], this.width * 2.7, [400, 70]));
-    return this.circles.filter(function(d) {
-      return d.name === "J++";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this), true);
-    });
-  };
-
   Map.prototype.personclick = function() {
     var that;
     that = this;
-    this.viewGlobal();
+    this.viewEurope();
     this.closeAll();
     return this.circles.filter(function(d) {
       return d.type === "person";
@@ -990,14 +950,12 @@ network.Map = (function(_super) {
   };
 
   Map.prototype.companyclick = function() {
-    var partners, that;
+    var that;
     that = this;
     this.viewEurope();
     this.closeAll();
-    partners = ["dataninja", "wikileaks", "arte", "wedodata", 'okf'];
     return this.circles.filter(function(d) {
-      var _ref;
-      return _ref = d.id, __indexOf.call(partners, _ref) >= 0;
+      return d.type === "company";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
     });

@@ -27,8 +27,6 @@ PERSON_COLOR=#A8D8FF
 		stroke-width       : 1px
 		stroke-opacity     : 0.4
 		fill               : #BEBEC9
-		// &:hover:
-		// 	fill: #98989B
 
 	.city:
 		font-size: 0.7em
@@ -48,22 +46,23 @@ PERSON_COLOR=#A8D8FF
 		&.event circle:
 			stroke: $EVENT_COLOR
 
-	.dialog:
-		background-color : green
-
 	.legend:
-		.circle:
-			background-color : black
-			border-radius    : 50%
-			border           : 2px solid black
-			width            : 8px
-			height           : 8px
-			&.event:
-				border-color:$EVENT_COLOR
-			&.person:
-				border-color:$PERSON_COLOR
-			&.company:
-				border-color:$COMPANY_COLOR
+		//display: inline-block
+		.l:
+			//display: inline-block
+			float:left
+			.circle:
+				background-color : black
+				border-radius    : 50%
+				border           : 2px solid black
+				width            : 8px
+				height           : 8px
+				&.event:
+					border-color:$EVENT_COLOR
+				&.person:
+					border-color:$PERSON_COLOR
+				&.company:
+					border-color:$COMPANY_COLOR
 
 .Controls:
 	position: absolute

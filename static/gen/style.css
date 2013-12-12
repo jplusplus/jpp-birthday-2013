@@ -83,11 +83,11 @@ a {
   stroke: #fff845;
 }
 
-.Map .dialog {
-  background-color: green;
+.Map .legend .l {
+  float: left;
 }
 
-.Map .legend .circle {
+.Map .legend .l .circle {
   background-color: black;
   border-radius: 50%;
   -moz-border-radius: 50%;
@@ -99,15 +99,15 @@ a {
   height: 8px;
 }
 
-.Map .legend .circle.event {
+.Map .legend .l .circle.event {
   border-color: #fff845;
 }
 
-.Map .legend .circle.person {
+.Map .legend .l .circle.person {
   border-color: #a8d8ff;
 }
 
-.Map .legend .circle.company {
+.Map .legend .l .circle.company {
   border-color: #ff7979;
 }
 

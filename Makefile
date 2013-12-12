@@ -9,4 +9,8 @@ install:
 	virtualenv venv --no-site-packages --distribute --prompt=Birthday2013
 	. `pwd`/.env ; pip install -r requirements.txt
 
+freeze:
+	. `pwd`/.env ; python -c "from webapp import app; from flask_frozen import Freezer; freezer = Freezer(app); freezer.freeze()"
+	rm build/static/.webassets-cache/ -r
+
 # EOF

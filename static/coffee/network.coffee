@@ -337,23 +337,12 @@ class network.Map extends Widget
 
 	renderCountries: =>
 		that = this
-		count = {
-			'FRA' : 5
-			'ESP' : 1
-			'DEU' : 2
-			'SWE' : 1
-			'USA' : 1
-			'CAN' : 2
-			'BGR' : 1
-			'NET' : 1
-		}
 		@groupPaths.selectAll(".country")
 			.data(@countries.features)
 			.enter()
 				.append("path")
 				.attr("d", @path)
 				.attr("class", "country")
-				.attr("fill", (d) -> return d3.rgb("#5C5D62").darker(count[d.id] * 0.6 | 0))
 
 	move:(_rotation, _scale, _translate) =>
 		@n_rotation  = if _rotation?  then _rotation  else @n_rotation or @projection.rotate()

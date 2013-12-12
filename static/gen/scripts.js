@@ -882,21 +882,9 @@ network.Map = (function(_super) {
   };
 
   Map.prototype.renderCountries = function() {
-    var count, that;
+    var that;
     that = this;
-    count = {
-      'FRA': 5,
-      'ESP': 1,
-      'DEU': 2,
-      'SWE': 1,
-      'USA': 1,
-      'CAN': 2,
-      'BGR': 1,
-      'NET': 1
-    };
-    return this.groupPaths.selectAll(".country").data(this.countries.features).enter().append("path").attr("d", this.path).attr("class", "country").attr("fill", function(d) {
-      return d3.rgb("#5C5D62").darker(count[d.id] * 0.6 | 0);
-    });
+    return this.groupPaths.selectAll(".country").data(this.countries.features).enter().append("path").attr("d", this.path).attr("class", "country");
   };
 
   Map.prototype.move = function(_rotation, _scale, _translate) {

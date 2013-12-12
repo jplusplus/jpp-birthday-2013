@@ -50,7 +50,7 @@
 		{
 		"type" : "person",
 		"name" : "Sebastian Kraus",
-		"description" : "Journalist",
+		"description" : "Journalist in residence",
 		"twitter" : "https://twitter.com/sm_kraus",
 		"img"  : "images/seb.png",
 		"id"   : "seb",
@@ -158,7 +158,7 @@
 	},
 	{
 		"type" : "company",
-		"name" : "J++",
+		"name" : "Journalism++",
 		"description" : "Stockholm",
 		"img" : "images/jpp.png",
 		"link" : "http://stockholm.jplusplus.org/",

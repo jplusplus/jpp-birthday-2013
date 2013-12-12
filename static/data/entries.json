@@ -108,6 +108,42 @@
 		}
 	},
 	{
+		"type" : "person",
+		"id" : "jelle",
+		"name" : "Jelle Kamsma",
+		"description" : "Datajournalist",
+		"twitter" : "http://twitter.com/ddjelle",
+		"img"  : "images/djelle.png" ,
+		"geo" : {
+			"lon": 4.89517,
+			"lat": 52.37022
+		}
+	},
+	{
+		"type" : "person",
+		"id" : "yordi",
+		"name" : "Yordi Dam",
+		"description" : "Designer",
+		"twitter" : "http://twitter.com/yordidam",
+		"img"  : "images/yordidam.png" ,
+		"geo" : {
+			"lon": 4.89517,
+			"lat": 52.37022
+		}
+	},
+	{
+		"type" : "person",
+		"id" : "erik",
+		"name" : "Erik Willems",
+		"description" : "Programmer",
+		"twitter" : "http://twitter.com/ehwillems",
+		"img"  : "images/ehwillems.png" ,
+		"geo" : {
+			"lon": 4.89517,
+			"lat": 52.37022
+		}
+	},
+	{
 		"type" : "company",
 		"name" : "Journalism++",
 		"description" : "Cologne",

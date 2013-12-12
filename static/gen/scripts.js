@@ -537,6 +537,7 @@ network.Map = (function(_super) {
   function Map() {
     this.closeAll = __bind(this.closeAll, this);
     this.allclick = __bind(this.allclick, this);
+    this.jppclick = __bind(this.jppclick, this);
     this.eventclick = __bind(this.eventclick, this);
     this.companyclick = __bind(this.companyclick, this);
     this.personclick = __bind(this.personclick, this);
@@ -976,6 +977,18 @@ network.Map = (function(_super) {
       return d.type === "event";
     }).each(function(d) {
       return that.openCircle(d, d3.select(this));
+    });
+  };
+
+  Map.prototype.jppclick = function() {
+    var that;
+    that = this;
+    this.viewEurope();
+    this.closeAll();
+    return this.circles.filter(function(d) {
+      return d.type === "company" && d.name === "Journalism++";
+    }).each(function(d) {
+      return that.openCircle(d, d3.select(this), true);
     });
   };
 

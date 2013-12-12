@@ -294,7 +294,7 @@ class network.Map extends Widget
 			clearTimeout(@hideLegendTimer)
 			if d.y > @height - @uis.panel.height()
 				@uis.panel.addClass('top')
-				@uis.panel.css('top', -@height - 7)
+				@uis.panel.css('top', -@height - 11)
 			else
 				@uis.panel.removeClass('top')
 				@uis.panel.css('top', -@uis.panel.height() - 3)

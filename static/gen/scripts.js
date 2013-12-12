@@ -845,7 +845,7 @@ network.Map = (function(_super) {
       clearTimeout(_this.hideLegendTimer);
       if (d.y > _this.height - _this.uis.panel.height()) {
         _this.uis.panel.addClass('top');
-        _this.uis.panel.css('top', -_this.height - 7);
+        _this.uis.panel.css('top', -_this.height - 11);
       } else {
         _this.uis.panel.removeClass('top');
         _this.uis.panel.css('top', -_this.uis.panel.height() - 3);

@@ -1,31 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div data-widget="network.Page" class="Page widget">
-		<div data-widget="network.Map" class="Map widget primary">
-			<div class="Panel hidden">
-				<div class="wrapper">
-					<div class="icone">
-						<img />
+	<div id="main">
+		<div data-widget="network.Page" class="Page widget">
+			<div data-widget="network.Map" class="Map widget primary">
+				<div class="Panel hidden">
+					<div class="wrapper">
+						<div class="icone">
+							<img />
+						</div>
+						<h2 class="title">{#title#}</h2>
+						<p class="description">{#description#}</p>
+						<p class="link">{#link#}</p>
+						<!-- <div class="github hidden">
+							<img src="static/images/github.png" />
+							followers: <span data-field="followers"></span>&nbsp;&nbsp;repos: <span data-field="repos"></span>
+						</div> -->
 					</div>
-					<h2 class="title">{#title#}</h2>
-					<p class="description">{#description#}</p>
-					<p class="link">{#link#}</p>
-					<!-- <div class="github hidden">
-						<img src="static/images/github.png" />
-						followers: <span data-field="followers"></span>&nbsp;&nbsp;repos: <span data-field="repos"></span>
-					</div> -->
+				</div>
+				<div class="legend">
+					<div class="l do" data-action="eventclick"><div class="circle event"></div><span>Event</span></div>
+					<div class="l do" data-action="personclick"><div class="circle person"></div><span>Person</span></div>
+					<div class="l do" data-action="companyclick"><div class="circle company"></div><span>Company</span></div>
 				</div>
 			</div>
-			<div class="legend">
-
-				<div class="l do" data-action="eventclick"><div class="circle event"></div><span>Event</span></div>
-				<div class="l do" data-action="personclick"><div class="circle person"></div><span>Person</span></div>
-				<div class="l do" data-action="companyclick"><div class="circle company"></div><span>Company</span></div>
+			<div class="Title container">
+				<div class="left30 top30 tc">
+					<h1>One More Year !</h1>
+					<p>And that's super cool, baby.</p>
+				</div>
 			</div>
-		</div>
-		<div class="Title">
-			<h1>One More Year !</h1>
-			<p>And that's super cool, baby.</p>
 		</div>
 	</div>
 

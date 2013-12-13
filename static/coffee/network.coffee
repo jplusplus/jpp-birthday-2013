@@ -387,66 +387,45 @@ class network.Map extends Widget
 
 	personclick: (e) =>
 		that = @
-		$(".l").removeClass("clicked")
-		if @current_filter == "person"
-			@closeAll()
-			@current_filter = null
-			return
+		@setFilter("person", e.currentTarget)
 		@viewEurope()
-		@closeAll()
 		@circles.filter((d) -> d.type=="person").each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
-		@current_filter = "person"
-		$(e.currentTarget).addClass("clicked")
 
 	companyclick: (e) =>
 		that = @
-		$(".l").removeClass("clicked")
-		if @current_filter == "company"
-			@closeAll()
-			@current_filter = null
-			return
+		@setFilter("company", e.currentTarget)
 		@viewEurope()
-		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
-		@current_filter = "company"
-		$(e.currentTarget).addClass("clicked")
-
 
 	eventclick: (e) =>
 		that = @
-		$(".l").removeClass("clicked")
-		if @current_filter == "event"
-			@closeAll()
-			@current_filter = null
-			return
+		@setFilter("event", e.currentTarget)
 		@viewGlobal()
-		@closeAll()
 		@circles.filter((d) -> d.type=="event").each((d) ->
 			that.openCircle(d, d3.select(this))
 		)
-		@current_filter = "event"
-		$(e.currentTarget).addClass("clicked")
-
 
 	jppclick: (e) =>
 		that = @
-		$(".l").removeClass("clicked")
-		if @current_filter == "jpp"
-			@closeAll()
-			@current_filter = null
-			return
+		@setFilter("jpp", e.currentTarget)
 		@viewEurope()
-		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->
 			that.openCircle(d, d3.select(this), false)
 		)
-		@current_filter = "jpp"
-		$(e.currentTarget).addClass("clicked")
 
+	setFilter: (filter, elmt) =>
+		$(".l").removeClass("clicked")
+		if @current_filter == filter
+			@closeAll()
+			@current_filter = null
+			return
+		@closeAll()
+		@current_filter = filter
+		$(elmt).addClass("clicked")
 
 	allclick: =>
 		that = @

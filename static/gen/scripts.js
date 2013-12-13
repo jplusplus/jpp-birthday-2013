@@ -595,7 +595,7 @@ network.Map = (function(_super) {
   };
 
   Map.prototype.init_size = function() {
-    var bounds, height, hscale, scale, vscale, width;
+    var bounds, center, height, hscale, scale, vscale, width;
     width = $(window).width();
     height = $(window).height() - this.ui.offset().top - ($(window).height() - $(".Title p").offset().top) - 30;
     if (width != null) {
@@ -616,7 +616,8 @@ network.Map = (function(_super) {
       vscale = 150 * this.height / (bounds[1][1] - bounds[0][1]);
       scale = Math.min(hscale, vscale);
       this.scale = scale;
-      this.projection.scale(this.scale).translate([this.width / 2, this.height / 2]);
+      center = this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
+      this.projection.translate([this.width / 2, this.height / 2]).scale(this.scale).center([center[0], center[1] - 30]);
     }
     if (this.svg != null) {
       this.svg.style('width', this.width + 'px').style('height', this.height + 'px');
@@ -637,14 +638,20 @@ network.Map = (function(_super) {
     });
   };
 
-  Map.prototype.getBoundingBox = function() {
+  Map.prototype.getBoundingBox = function(filter) {
     var coords, e, maxX, maxY, minX, minY, padding, _i, _len, _ref;
     coords = [];
-    padding = 50;
+    padding = 30;
     _ref = this.entries;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       e = _ref[_i];
-      coords.push([e.qx, e.qy]);
+      if (filter != null) {
+        if (e.name === filter) {
+          coords.push([e.qx, e.qy]);
+        }
+      } else {
+        coords.push([e.qx, e.qy]);
+      }
     }
     maxY = d3.max(coords, function(e) {
       return e[1];
@@ -894,13 +901,13 @@ network.Map = (function(_super) {
     return this.groupPaths.selectAll(".country").data(this.countries.features).enter().append("path").attr("d", this.path).attr("class", "country");
   };
 
-  Map.prototype.move = function(_rotation, _scale, _translate) {
+  Map.prototype.move = function(_rotation, _scale, _center) {
     var _this = this;
     this.n_rotation = _rotation != null ? _rotation : this.n_rotation || this.projection.rotate();
     this.n_scale = _scale != null ? _scale : this.n_scale || this.projection.scale();
-    this.n_translate = _translate != null ? _translate : this.n_translate || this.projection.translate();
+    this.n_center = _center != null ? _center : this.n_center || this.projection.center();
     return function(timestamp) {
-      var progress, rotation, scale, translate;
+      var center, progress, rotation, scale;
       if (_this.start == null) {
         _this.start = timestamp;
       }
@@ -910,10 +917,10 @@ network.Map = (function(_super) {
       rotation[1] += (_this.n_rotation[1] - rotation[1]) * progress / 1000;
       scale = _this.projection.scale();
       scale += (_this.n_scale - scale) * progress / 1000;
-      translate = _this.projection.translate();
-      translate[0] += (_this.n_translate[0] - translate[0]) * progress / 1000;
-      translate[1] += (_this.n_translate[1] - translate[1]) * progress / 1000;
-      _this.projection.scale(scale).rotate(rotation).translate(translate);
+      center = _this.projection.center();
+      center[0] += (_this.n_center[0] - center[0]) * progress / 1000;
+      center[1] += (_this.n_center[1] - center[1]) * progress / 1000;
+      _this.projection.scale(scale).rotate(rotation).center(center);
       if (!_this.groupPathsSelection) {
         _this.groupPathsSelection = _this.groupPaths.selectAll("path");
       }
@@ -928,18 +935,31 @@ network.Map = (function(_super) {
   };
 
   Map.prototype.viewGlobal = function() {
+    var bounds, center, hscale, scale, vscale;
     if (this.currentView !== "global") {
-      this.animationRequest = requestAnimationFrame(this.move(this.initialRotation, this.scale, [this.width / 2, this.height / 2]));
+      bounds = this.getBoundingBox();
+      hscale = this.scale * this.width / (bounds[1][0] - bounds[0][0]);
+      vscale = this.scale * this.height / (bounds[1][1] - bounds[0][1]);
+      scale = Math.min(hscale, vscale);
+      center = this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
+      center = [center[0], center[1] - 30];
+      this.scale = scale;
+      this.animationRequest = requestAnimationFrame(this.move(this.initialRotation, this.scale, center));
     }
     return this.currentView = "global";
   };
 
   Map.prototype.viewEurope = function() {
-    var translate;
+    var bounds, center, hscale, scale, vscale;
     if (this.currentView !== "europe") {
-      translate = this.projection.translate();
-      translate[1] += 300;
-      this.animationRequest = requestAnimationFrame(this.move(null, this.scale * 4, translate));
+      bounds = this.getBoundingBox("Journalism++");
+      hscale = this.scale * this.width / (bounds[1][0] - bounds[0][0]);
+      vscale = this.scale * this.height / (bounds[1][1] - bounds[0][1]);
+      scale = Math.min(hscale, vscale);
+      center = this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
+      center = [center[0], center[1] - 30];
+      this.scale = scale;
+      this.animationRequest = requestAnimationFrame(this.move(null, scale, center));
     }
     return this.currentView = "europe";
   };

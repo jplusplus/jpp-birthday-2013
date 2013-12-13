@@ -64,7 +64,7 @@ class network.Map extends Widget
 		@width      = undefined
 		@height     = undefined
 		@hideLegendTimer = undefined
-		@initialRotation = [0,-30, 0]
+		@initialRotation = [0, -30, 0]
 
 	bindUI: (ui) =>
 		super
@@ -115,9 +115,11 @@ class network.Map extends Widget
 			vscale  = 150 * @height / (bounds[1][1] - bounds[0][1])
 			scale   = Math.min(hscale, vscale)
 			@scale  = scale
+			center = @projection.invert([(bounds[1][0] + bounds[0][0])/2, (bounds[1][1] + bounds[0][1])/2])
 			@projection
+				.translate([(@width) / 2 , (@height) / 2])
 				.scale(@scale)
-				.translate([@width / 2, @height / 2])
+				.center([center[0], center[1] - 30 ])
 		 # resize the map container
 		if @svg?
 			@svg
@@ -138,11 +140,15 @@ class network.Map extends Widget
 			top    : -height - 3
 		# "margin-left" : @ui.find('svg').offset().left
 
-	getBoundingBox: =>
+	getBoundingBox: (filter) =>
 		coords  = []
-		padding = 50
+		padding = 30
 		for e in @entries
-			coords.push([e.qx, e.qy])
+			if filter?
+				if e.name == filter
+					coords.push([e.qx, e.qy])
+			else
+				coords.push([e.qx, e.qy])
 		maxY = d3.max(coords, (e)-> e[1])
 		maxX = d3.max(coords, (e)-> e[0])
 		minY = d3.min(coords, (e)-> e[1])
@@ -346,10 +352,12 @@ class network.Map extends Widget
 				.attr("d", @path)
 				.attr("class", "country")
 
-	move:(_rotation, _scale, _translate) =>
+	move:(_rotation, _scale, _center) =>
 		@n_rotation  = if _rotation?  then _rotation  else @n_rotation or @projection.rotate()
 		@n_scale     = if _scale?     then _scale     else @n_scale or @projection.scale()
-		@n_translate = if _translate? then _translate else @n_translate or @projection.translate()
+		# @n_translate = if _translate? then _translate else @n_translate or @projection.translate()
+		@n_center = if _center?       then _center    else @n_center or @projection.center()
+
 		return (timestamp) =>
 			if not @start?
 				@start = timestamp
@@ -359,13 +367,13 @@ class network.Map extends Widget
 			rotation[1]  += (@n_rotation[1] - rotation[1]) * progress/1000
 			scale         = @projection.scale()
 			scale        += (@n_scale - scale) * progress/1000
-			translate     = @projection.translate()
-			translate[0] += (@n_translate[0] - translate[0]) * progress/1000
-			translate[1] += (@n_translate[1] - translate[1]) * progress/1000
+			center        = @projection.center()
+			center[0]       += (@n_center[0] - center[0]) * progress/1000
+			center[1]       += (@n_center[1] - center[1]) * progress/1000
 			@projection
 				.scale(scale)
 				.rotate(rotation)
-				.translate(translate)
+				.center(center)
 			@groupPathsSelection = @groupPaths.selectAll("path") unless @groupPathsSelection
 			@groupPathsSelection.attr("d", @path)
 			@entries = @computeEntries(@entries)
@@ -376,14 +384,26 @@ class network.Map extends Widget
 
 	viewGlobal: =>
 		if @currentView != "global"
-			@animationRequest = requestAnimationFrame @move(@initialRotation, @scale, [@width / 2, @height / 2])
+			bounds = @getBoundingBox()
+			hscale  = @scale * @width  / (bounds[1][0] - bounds[0][0])
+			vscale  = @scale * @height / (bounds[1][1] - bounds[0][1])
+			scale   = Math.min(hscale, vscale)
+			center = @projection.invert([(bounds[1][0] + bounds[0][0])/2, (bounds[1][1] + bounds[0][1])/2])
+			center = [center[0], center[1] - 30 ]
+			@scale = scale
+			@animationRequest = requestAnimationFrame @move(@initialRotation, @scale, center)
 		@currentView = "global"
 
 	viewEurope: =>
 		if @currentView != "europe"
-			translate = @projection.translate()
-			translate[1] += 300
-			@animationRequest = requestAnimationFrame @move(null, @scale * 4, translate)
+			bounds = @getBoundingBox("Journalism++")
+			hscale  = @scale * @width  / (bounds[1][0] - bounds[0][0])
+			vscale  = @scale * @height / (bounds[1][1] - bounds[0][1])
+			scale   = Math.min(hscale, vscale)
+			center = @projection.invert([(bounds[1][0] + bounds[0][0])/2, (bounds[1][1] + bounds[0][1])/2])
+			center = [center[0], center[1] - 30 ]
+			@scale = scale
+			@animationRequest = requestAnimationFrame @move(null, scale, center)
 		@currentView = "europe"
 
 	personclick: (e) =>

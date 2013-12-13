@@ -508,7 +508,6 @@ network.Map = (function(_super) {
 
   function Map() {
     this.closeAll = __bind(this.closeAll, this);
-    this.allclick = __bind(this.allclick, this);
     this.setFilter = __bind(this.setFilter, this);
     this.jppclick = __bind(this.jppclick, this);
     this.eventclick = __bind(this.eventclick, this);
@@ -940,49 +939,53 @@ network.Map = (function(_super) {
   Map.prototype.personclick = function(e) {
     var that;
     that = this;
-    this.setFilter("person", e.currentTarget);
-    this.viewEurope();
-    return this.circles.filter(function(d) {
-      return d.type === "person";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this));
-    });
+    if (this.setFilter("person", e.currentTarget)) {
+      this.viewEurope();
+      return this.circles.filter(function(d) {
+        return d.type === "person";
+      }).each(function(d) {
+        return that.openCircle(d, d3.select(this));
+      });
+    }
   };
 
   Map.prototype.companyclick = function(e) {
     var that;
     that = this;
-    this.setFilter("company", e.currentTarget);
-    this.viewEurope();
-    return this.circles.filter(function(d) {
-      return d.type === "company" && d.name !== "Journalism++";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this));
-    });
+    if (this.setFilter("company", e.currentTarget)) {
+      this.viewEurope();
+      return this.circles.filter(function(d) {
+        return d.type === "company" && d.name !== "Journalism++";
+      }).each(function(d) {
+        return that.openCircle(d, d3.select(this));
+      });
+    }
   };
 
   Map.prototype.eventclick = function(e) {
     var that;
     that = this;
-    this.setFilter("event", e.currentTarget);
-    this.viewGlobal();
-    return this.circles.filter(function(d) {
-      return d.type === "event";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this));
-    });
+    if (this.setFilter("event", e.currentTarget)) {
+      this.viewGlobal();
+      return this.circles.filter(function(d) {
+        return d.type === "event";
+      }).each(function(d) {
+        return that.openCircle(d, d3.select(this));
+      });
+    }
   };
 
   Map.prototype.jppclick = function(e) {
     var that;
     that = this;
-    this.setFilter("jpp", e.currentTarget);
-    this.viewEurope();
-    return this.circles.filter(function(d) {
-      return d.type === "company" && d.name === "Journalism++";
-    }).each(function(d) {
-      return that.openCircle(d, d3.select(this), false);
-    });
+    if (this.setFilter("jpp", e.currentTarget)) {
+      this.viewEurope();
+      return this.circles.filter(function(d) {
+        return d.type === "company" && d.name === "Journalism++";
+      }).each(function(d) {
+        return that.openCircle(d, d3.select(this), false);
+      });
+    }
   };
 
   Map.prototype.setFilter = function(filter, elmt) {
@@ -990,29 +993,21 @@ network.Map = (function(_super) {
     if (this.current_filter === filter) {
       this.closeAll();
       this.current_filter = null;
-      return;
+      return false;
     }
     this.closeAll();
     this.current_filter = filter;
-    return $(elmt).addClass("clicked");
-  };
-
-  Map.prototype.allclick = function() {
-    var that;
-    that = this;
-    this.closeAll();
-    this.viewGlobal();
-    return this.circles.each(function(d) {
-      return that.openCircle(d, d3.select(this));
-    });
+    $(elmt).addClass("clicked");
+    return true;
   };
 
   Map.prototype.closeAll = function() {
     var that;
     that = this;
-    return this.circles.each(function(d) {
+    this.circles.each(function(d) {
       return that.closeCircle(d, d3.select(this));
     });
+    return true;
   };
 
   return Map;

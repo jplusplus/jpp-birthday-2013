@@ -387,54 +387,49 @@ class network.Map extends Widget
 
 	personclick: (e) =>
 		that = @
-		@setFilter("person", e.currentTarget)
-		@viewEurope()
-		@circles.filter((d) -> d.type=="person").each((d) ->
-			that.openCircle(d, d3.select(this))
-		)
+		if @setFilter("person", e.currentTarget)
+			@viewEurope()
+			@circles.filter((d) -> d.type=="person").each((d) ->
+				that.openCircle(d, d3.select(this))
+			)
 
 	companyclick: (e) =>
 		that = @
-		@setFilter("company", e.currentTarget)
-		@viewEurope()
-		@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
-			that.openCircle(d, d3.select(this))
-		)
+		if @setFilter("company", e.currentTarget)
+			@viewEurope()
+			@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
+				that.openCircle(d, d3.select(this))
+			)
 
 	eventclick: (e) =>
 		that = @
-		@setFilter("event", e.currentTarget)
-		@viewGlobal()
-		@circles.filter((d) -> d.type=="event").each((d) ->
-			that.openCircle(d, d3.select(this))
-		)
+		if @setFilter("event", e.currentTarget)
+			@viewGlobal()
+			@circles.filter((d) -> d.type=="event").each((d) ->
+				that.openCircle(d, d3.select(this))
+			)
 
 	jppclick: (e) =>
 		that = @
-		@setFilter("jpp", e.currentTarget)
-		@viewEurope()
-		@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->
-			that.openCircle(d, d3.select(this), false)
-		)
+		if @setFilter("jpp", e.currentTarget)
+			@viewEurope()
+			@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->
+				that.openCircle(d, d3.select(this), false)
+			)
 
 	setFilter: (filter, elmt) =>
 		$(".l").removeClass("clicked")
 		if @current_filter == filter
 			@closeAll()
 			@current_filter = null
-			return
+			return false
 		@closeAll()
 		@current_filter = filter
 		$(elmt).addClass("clicked")
-
-	allclick: =>
-		that = @
-		@closeAll()
-		@viewGlobal()
-		@circles.each((d) -> that.openCircle(d, d3.select(this)))
+		return true
 
 	closeAll: =>
 		that = @
 		@circles.each((d) -> that.closeCircle(d, d3.select(this)))
-
+		return true
 # EOF

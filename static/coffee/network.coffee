@@ -442,7 +442,7 @@ class network.Map extends Widget
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->
-			that.openCircle(d, d3.select(this), true)
+			that.openCircle(d, d3.select(this), false)
 		)
 		@current_filter = "jpp"
 		$(e.currentTarget).addClass("clicked")

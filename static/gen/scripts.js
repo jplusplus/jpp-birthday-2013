@@ -633,7 +633,7 @@ network.Map = (function(_super) {
     height = this.height * 0.3;
     return this.uis.panel.css({
       height: height,
-      width: this.width + 4,
+      width: this.width + 5,
       top: -height - 3
     });
   };

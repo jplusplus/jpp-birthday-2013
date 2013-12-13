@@ -136,7 +136,7 @@ class network.Map extends Widget
 		height = @height *0.3
 		@uis.panel.css 
 			height : height
-			width  : @width + 4
+			width  : @width + 5
 			top    : -height - 3
 		# "margin-left" : @ui.find('svg').offset().left
 

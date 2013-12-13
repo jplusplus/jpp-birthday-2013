@@ -21,6 +21,7 @@ jQuery.fn.opacity = function(int) {
 
 window.serious.Utils.clone = function(obj) {
   var flags, key, newInstance;
+
   if ((obj == null) || typeof obj !== 'object') {
     return obj;
   }
@@ -52,6 +53,7 @@ window.serious.Utils.clone = function(obj) {
 
 jQuery.fn.cloneTemplate = function(dict, removeUnusedField) {
   var klass, nui, value;
+
   if (removeUnusedField == null) {
     removeUnusedField = false;
   }
@@ -77,6 +79,7 @@ jQuery.fn.cloneTemplate = function(dict, removeUnusedField) {
 
 Object.size = function(obj) {
   var key, size;
+
   size = 0;
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -98,6 +101,7 @@ window.serious.Widget = (function() {
 
   Widget.bindAll = function() {
     var first, firsts, _i, _len;
+
     firsts = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
     if (firsts) {
       for (_i = 0, _len = firsts.length; _i < _len; _i++) {
@@ -107,6 +111,7 @@ window.serious.Widget = (function() {
     }
     return $(".widget").each(function() {
       var self;
+
       self = $(this);
       if (!self.hasClass('template') && !self.parents().hasClass('template')) {
         return Widget.ensureWidget(self);
@@ -116,6 +121,7 @@ window.serious.Widget = (function() {
 
   Widget.ensureWidget = function(ui) {
     var widget, widget_class;
+
     ui = $(ui);
     if (!ui.length) {
       return null;
@@ -140,6 +146,7 @@ window.serious.Widget = (function() {
 
   Widget.prototype.bindUI = function(ui) {
     var action, annotated, expected, key, node, nui, value, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
+
     this.ui = $(ui);
     if (this.ui[0]._widget) {
       delete this.ui[0]._widget;
@@ -215,6 +222,7 @@ window.serious.Widget = (function() {
     */
 
     var name, _value;
+
     if (typeof field === "object") {
       context = value || this.ui;
       for (name in field) {
@@ -238,6 +246,7 @@ window.serious.Widget = (function() {
 
   Widget.prototype.cloneTemplate = function(template_nui, dict, removeUnusedField) {
     var action, klass, nui, value, _i, _len, _ref;
+
     if (removeUnusedField == null) {
       removeUnusedField = false;
     }
@@ -270,6 +279,7 @@ window.serious.Widget = (function() {
 
   Widget.prototype._bindClick = function(nui, action) {
     var _this = this;
+
     if ((action != null) && __indexOf.call(this.ACTIONS, action) >= 0) {
       return nui.click(function(e) {
         _this[action](e);
@@ -289,6 +299,7 @@ window.serious.Widget = (function() {
 
   Widget.prototype.applyState = function(key) {
     var annotated, values, _ref, _results;
+
     if ((this._states != null) && (this._states[key] != null)) {
       _ref = this._states[key];
       _results = [];
@@ -323,11 +334,13 @@ window.serious.URL = (function() {
     this.onStateChanged = __bind(this.onStateChanged, this);
     this.get = __bind(this.get, this);
     var _this = this;
+
     this.previousHash = [];
     this.handlers = [];
     this.hash = this.fromString(location.hash);
     $(window).hashchange(function() {
       var handler, _i, _len, _ref, _results;
+
       _this.previousHash = window.serious.Utils.clone(_this.hash);
       _this.hash = _this.fromString(location.hash);
       _ref = _this.handlers;
@@ -357,6 +370,7 @@ window.serious.URL = (function() {
 
   URL.prototype.set = function(fields, silent) {
     var hash, key, value;
+
     if (silent == null) {
       silent = false;
     }
@@ -373,6 +387,7 @@ window.serious.URL = (function() {
 
   URL.prototype.update = function(fields, silent) {
     var hash, key, value;
+
     if (silent == null) {
       silent = false;
     }
@@ -390,6 +405,7 @@ window.serious.URL = (function() {
 
   URL.prototype.remove = function(key, silent) {
     var hash;
+
     if (silent == null) {
       silent = false;
     }
@@ -432,11 +448,13 @@ window.serious.URL = (function() {
 
   URL.prototype.enableDynamicLinks = function(context) {
     var _this = this;
+
     if (context == null) {
       context = null;
     }
     return $("a.internal[href]", context).click(function(e) {
       var href, link;
+
       link = $(e.currentTarget);
       href = link.attr("data-href") || link.attr("href");
       if (href[0] === "#") {
@@ -454,6 +472,7 @@ window.serious.URL = (function() {
 
   URL.prototype.fromString = function(value) {
     var hash, hash_list, item, key, key_value, val, _i, _len;
+
     value = value || location.hash;
     hash = {};
     value = value.replace('!', '');
@@ -474,6 +493,7 @@ window.serious.URL = (function() {
 
   URL.prototype.toString = function(hash_list) {
     var i, key, new_hash, value;
+
     if (hash_list == null) {
       hash_list = null;
     }
@@ -503,34 +523,6 @@ Format = window.serious.format;
 
 Utils = window.serious.Utils;
 
-network.Page = (function(_super) {
-  __extends(Page, _super);
-
-  function Page() {
-    this.relayout = __bind(this.relayout, this);
-    this.bindUI = __bind(this.bindUI, this);
-    this.UIS = {
-      map: ".Map.primary",
-      title: ".Title"
-    };
-  }
-
-  Page.prototype.bindUI = function(ui) {
-    Page.__super__.bindUI.apply(this, arguments);
-    this.relayout();
-    return $(window).on('resize', this.relayout);
-  };
-
-  Page.prototype.relayout = function() {
-    var window_height;
-    window_height = $(window).height();
-    return this.uis.map.height(window_height - this.uis.title.outerHeight(true) - 20);
-  };
-
-  return Page;
-
-})(Widget);
-
 network.Map = (function(_super) {
   __extends(Map, _super);
 
@@ -557,7 +549,7 @@ network.Map = (function(_super) {
     this.getBoundingBox = __bind(this.getBoundingBox, this);
     this.init_size = __bind(this.init_size, this);
     this.bindUI = __bind(this.bindUI, this);
-    this.OPTIONS = {
+    this.relayout = __bind(this.relayout, this);    this.OPTIONS = {
       map_ratio: .5,
       litle_radius: 5,
       big_radius: 23
@@ -565,6 +557,7 @@ network.Map = (function(_super) {
     this.UIS = {
       panel: '.Panel'
     };
+    this.Page = $(".Page");
     this.ACTIONS = ['jppclick', 'closeAll', 'companyclick', 'allclick', 'personclick', 'eventclick', 'ffctnclick', 'datastoryclick'];
     this.projection = void 0;
     this.groupPaths = void 0;
@@ -576,10 +569,22 @@ network.Map = (function(_super) {
     this.initialRotation = [0, -30, 0];
   }
 
+  Map.prototype.relayout = function() {
+    this.width = this.Page.width();
+    this.height = this.width * this.OPTIONS.map_ratio;
+    return this.ui.css({
+      width: this.width,
+      height: this.height
+    });
+  };
+
   Map.prototype.bindUI = function(ui) {
     var graticule,
       _this = this;
+
     Map.__super__.bindUI.apply(this, arguments);
+    this.relayout();
+    $(window).on('resize', this.relayout);
     this.svg = d3.select(this.ui.get(0)).insert("svg", ":first-child").on("mousedown", function() {
       if (_this.legendBlocked) {
         return _this.hideLegend(true)();
@@ -595,21 +600,9 @@ network.Map = (function(_super) {
   };
 
   Map.prototype.init_size = function() {
-    var bounds, center, height, hscale, scale, vscale, width;
-    width = $(window).width();
-    height = $(window).height() - this.ui.offset().top - ($(window).height() - $(".Title p").offset().top) - 30;
-    if (width != null) {
-      this.width = width;
-      this.height = this.width * this.OPTIONS.map_ratio;
-      if (height > 0 && this.height > height) {
-        this.height = height;
-        this.width = this.height / this.OPTIONS.map_ratio;
-      }
-    }
-    this.ui.css({
-      width: this.width,
-      height: this.height
-    });
+    var bounds, center, height, hscale, scale, vscale;
+
+    this.relayout();
     if (this.projection != null) {
       bounds = this.getBoundingBox();
       hscale = 150 * this.width / (bounds[1][0] - bounds[0][0]);
@@ -640,6 +633,7 @@ network.Map = (function(_super) {
 
   Map.prototype.getBoundingBox = function(filter) {
     var coords, e, maxX, maxY, minX, minY, padding, _i, _len, _ref;
+
     coords = [];
     padding = 30;
     _ref = this.entries;
@@ -678,6 +672,7 @@ network.Map = (function(_super) {
 
   Map.prototype.computeEntries = function(entries) {
     var coord, entry, _i, _len, _results;
+
     _results = [];
     for (_i = 0, _len = entries.length; _i < _len; _i++) {
       entry = entries[_i];
@@ -696,9 +691,11 @@ network.Map = (function(_super) {
 
   Map.prototype.collide = function(alpha) {
     var quadtree;
+
     quadtree = d3.geom.quadtree(this.entries);
     return function(d) {
       var nx1, nx2, ny1, ny2, r;
+
       r = d.radius;
       nx1 = d.x - r;
       nx2 = d.x + r;
@@ -708,6 +705,7 @@ network.Map = (function(_super) {
       d.y += (d.gy - d.y) * alpha * 0.1;
       return quadtree.visit(function(quad, x1, y1, x2, y2) {
         var l, x, y;
+
         if (quad.point && quad.point !== d) {
           x = d.x - quad.point.x;
           y = d.y - quad.point.y;
@@ -729,6 +727,7 @@ network.Map = (function(_super) {
   Map.prototype.renderEntries = function() {
     var that,
       _this = this;
+
     that = this;
     this.force = d3.layout.force().nodes(this.entries).gravity(0).charge(0).size([that.width, that.height]).on("tick", function(e) {
       return that.circles.each(that.collide(e.alpha)).attr('transform', function(d) {
@@ -739,6 +738,7 @@ network.Map = (function(_super) {
       return d.type + " entity";
     }).call(this.force.drag).on("mouseup", function(e, d) {
       var open, ui;
+
       ui = d3.select(this);
       open = e.radius === that.OPTIONS.big_radius;
       if (open) {
@@ -807,9 +807,11 @@ network.Map = (function(_super) {
 
   Map.prototype.stickMembers = function(entry) {
     var data, e, _i, _len, _ref, _results;
+
     entry.sticky = true;
     _ref = this.circles.filter(function(e) {
       var _ref;
+
       return _ref = e.id, __indexOf.call(entry.members, _ref) >= 0;
     })[0];
     _results = [];
@@ -826,10 +828,12 @@ network.Map = (function(_super) {
 
   Map.prototype.unStickMembers = function(entry) {
     var data, e, _i, _len, _ref, _results;
+
     entry.sticky = false;
     this.entries = this.computeEntries(this.entries);
     _ref = this.circles.filter(function(e) {
       var _ref;
+
       return _ref = e.id, __indexOf.call(entry.members, _ref) >= 0;
     })[0];
     _results = [];
@@ -844,11 +848,13 @@ network.Map = (function(_super) {
 
   Map.prototype.showLegend = function(blocked) {
     var _this = this;
+
     if (blocked == null) {
       blocked = false;
     }
     return (function(d, i) {
       var $github, link;
+
       _this.legendBlocked = blocked;
       clearTimeout(_this.hideLegendTimer);
       if (d.y > _this.height - _this.uis.panel.height()) {
@@ -877,6 +883,7 @@ network.Map = (function(_super) {
 
   Map.prototype.hideLegend = function(force_blocked) {
     var _this = this;
+
     if (force_blocked == null) {
       force_blocked = false;
     }
@@ -897,17 +904,20 @@ network.Map = (function(_super) {
 
   Map.prototype.renderCountries = function() {
     var that;
+
     that = this;
     return this.groupPaths.selectAll(".country").data(this.countries.features).enter().append("path").attr("d", this.path).attr("class", "country");
   };
 
   Map.prototype.move = function(_rotation, _scale, _center) {
     var _this = this;
+
     this.n_rotation = _rotation != null ? _rotation : this.n_rotation || this.projection.rotate();
     this.n_scale = _scale != null ? _scale : this.n_scale || this.projection.scale();
     this.n_center = _center != null ? _center : this.n_center || this.projection.center();
     return function(timestamp) {
       var center, progress, rotation, scale;
+
       if (_this.start == null) {
         _this.start = timestamp;
       }
@@ -936,6 +946,7 @@ network.Map = (function(_super) {
 
   Map.prototype.viewGlobal = function() {
     var bounds, center, hscale, scale, vscale;
+
     if (this.currentView !== "global") {
       bounds = this.getBoundingBox();
       hscale = this.scale * this.width / (bounds[1][0] - bounds[0][0]);
@@ -951,6 +962,7 @@ network.Map = (function(_super) {
 
   Map.prototype.viewEurope = function() {
     var bounds, center, hscale, scale, vscale;
+
     if (this.currentView !== "europe") {
       bounds = this.getBoundingBox("Journalism++");
       hscale = this.scale * this.width / (bounds[1][0] - bounds[0][0]);
@@ -966,6 +978,7 @@ network.Map = (function(_super) {
 
   Map.prototype.personclick = function(e) {
     var that;
+
     that = this;
     $(".l").removeClass("clicked");
     if (this.current_filter === "person") {
@@ -986,6 +999,7 @@ network.Map = (function(_super) {
 
   Map.prototype.companyclick = function(e) {
     var that;
+
     that = this;
     $(".l").removeClass("clicked");
     if (this.current_filter === "company") {
@@ -1006,6 +1020,7 @@ network.Map = (function(_super) {
 
   Map.prototype.eventclick = function(e) {
     var that;
+
     that = this;
     $(".l").removeClass("clicked");
     if (this.current_filter === "event") {
@@ -1026,6 +1041,7 @@ network.Map = (function(_super) {
 
   Map.prototype.jppclick = function(e) {
     var that;
+
     that = this;
     $(".l").removeClass("clicked");
     if (this.current_filter === "jpp") {
@@ -1046,6 +1062,7 @@ network.Map = (function(_super) {
 
   Map.prototype.allclick = function() {
     var that;
+
     that = this;
     this.closeAll();
     this.viewGlobal();
@@ -1056,6 +1073,7 @@ network.Map = (function(_super) {
 
   Map.prototype.closeAll = function() {
     var that;
+
     that = this;
     return this.circles.each(function(d) {
       return that.closeCircle(d, d3.select(this));

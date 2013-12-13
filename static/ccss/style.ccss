@@ -69,8 +69,6 @@ LINK_COLOR=#F24405
 
 .Title:
 	overflow:hidden
-	//min-height: 100px
-	color: #f24405
 
 .primary.Map:
 	margin: 0 auto

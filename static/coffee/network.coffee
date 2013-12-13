@@ -17,29 +17,6 @@ Utils    = window.serious.Utils
 
 # -----------------------------------------------------------------------------
 #
-#    Page
-#
-# -----------------------------------------------------------------------------
-class network.Page extends Widget
-
-	constructor: ->
-		@UIS = {
-			map   : ".Map.primary"
-			title : ".Title"
-		}
-	
-	bindUI: (ui) =>
-		super
-		@relayout()
-		$(window).on('resize', @relayout)
-
-	relayout: =>
-		window_height = $(window).height()
-		# @uis.title.height(window_height * .2)
-		@uis.map.height(window_height - @uis.title.outerHeight(true) - 20)
-
-# -----------------------------------------------------------------------------
-#
 #    MAP
 #
 # -----------------------------------------------------------------------------
@@ -55,6 +32,9 @@ class network.Map extends Widget
 			panel : '.Panel'
 		}
 
+		# Selector outside the box
+		@Page = $(".Page")
+
 		@ACTIONS = ['jppclick', 'closeAll', 'companyclick', 'allclick', 'personclick', 'eventclick', 'ffctnclick', 'datastoryclick']
 
 		@projection = undefined
@@ -66,9 +46,19 @@ class network.Map extends Widget
 		@hideLegendTimer = undefined
 		@initialRotation = [0, -30, 0]
 
+
+	relayout: =>
+		@width  = @Page.width()
+		@height = @width * @OPTIONS.map_ratio
+		@ui.css(width: @width, height : @height)
+
+
 	bindUI: (ui) =>
 		super
-		@svg    = d3.select(@ui.get(0))
+		@relayout()
+		$(window).on('resize', @relayout)
+
+		@svg = d3.select(@ui.get(0))
 			.insert("svg", ":first-child")
 			# .attr("width", @width)
 			# .attr("height", @height)
@@ -96,18 +86,7 @@ class network.Map extends Widget
 
 	init_size: =>
 		# adjust things when the window size changes
-		width  = $(window).width()
-		height = $(window).height() - @ui.offset().top - ($(window).height() - $(".Title p").offset().top) - 30
-		if width?
-			@width  = width
-			@height = @width * @OPTIONS.map_ratio
-			if height > 0 and @height > height
-				@height = height
-				@width  = @height / @OPTIONS.map_ratio
-		@ui.css(
-			width  : @width
-			height : @height
-		)
+		@relayout()
 		# update projection
 		if @projection?
 			bounds  = @getBoundingBox()
@@ -134,7 +113,7 @@ class network.Map extends Widget
 			@force.stop().start()
 		# panel
 		height = @height *0.3
-		@uis.panel.css 
+		@uis.panel.css
 			height : height
 			width  : @width + 4
 			top    : -height - 3
@@ -332,7 +311,7 @@ class network.Map extends Widget
 	hideLegend:(force_blocked=false) =>
 		@legendBlocked = if force_blocked then false else @legendBlocked
 		return ((d,i) =>
-			if not @legendBlocked 
+			if not @legendBlocked
 				@_previousOver = undefined
 				clearTimeout(@hideLegendTimer)
 				@hideLegendTimer = setTimeout(=>
@@ -342,7 +321,7 @@ class network.Map extends Widget
 					, 250)
 				,100)
 		)
-		
+
 	renderCountries: =>
 		that = this
 		@groupPaths.selectAll(".country")
@@ -412,7 +391,7 @@ class network.Map extends Widget
 		if @current_filter == "person"
 			@closeAll()
 			@current_filter = null
-			return 
+			return
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="person").each((d) ->
@@ -427,7 +406,7 @@ class network.Map extends Widget
 		if @current_filter == "company"
 			@closeAll()
 			@current_filter = null
-			return 
+			return
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name!="Journalism++" ).each((d) ->
@@ -443,7 +422,7 @@ class network.Map extends Widget
 		if @current_filter == "event"
 			@closeAll()
 			@current_filter = null
-			return 
+			return
 		@viewGlobal()
 		@closeAll()
 		@circles.filter((d) -> d.type=="event").each((d) ->
@@ -459,7 +438,7 @@ class network.Map extends Widget
 		if @current_filter == "jpp"
 			@closeAll()
 			@current_filter = null
-			return 
+			return
 		@viewEurope()
 		@closeAll()
 		@circles.filter((d) -> d.type=="company" and d.name=="Journalism++").each((d) ->

@@ -472,7 +472,7 @@
                 "type" : "company",
                 "name" : "UNDP",
                 "description": "Journalism++ did a week-long workshop with young activists and journalists as part of the Youth Sleuth program by UNDP.",
-                "id" : "undp"
+                "id" : "undp",
                 "img": "images/undp.png",
                 "members" : ["nkb", "pirhoo"],
                 "geo" : {
@@ -484,7 +484,7 @@
                 "type" : "company",
                 "name" : "Tamedia",
                 "description": "Journalism++ trains Tamedia journalists of all backgrounds and makes them proficient in all things data.",
-                "id" : "tamedia"
+                "id" : "tamedia",
                 "img": "images/tamedia.png",
                 "members" : ["nkb", "pirhoo", "mirko"],
                 "geo" : {

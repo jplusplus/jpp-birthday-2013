@@ -419,6 +419,7 @@ class network.Map extends Widget
 
 	setFilter: (filter, elmt) =>
 		$(".l").removeClass("clicked")
+		@hideLegend(true)()
 		if @current_filter == filter
 			@closeAll()
 			@current_filter = null

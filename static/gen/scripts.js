@@ -990,6 +990,7 @@ network.Map = (function(_super) {
 
   Map.prototype.setFilter = function(filter, elmt) {
     $(".l").removeClass("clicked");
+    this.hideLegend(true)();
     if (this.current_filter === filter) {
       this.closeAll();
       this.current_filter = null;

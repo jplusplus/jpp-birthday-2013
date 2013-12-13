@@ -453,5 +453,43 @@
 			"lon": 24.94102,
 			"lat": 60.17332
 		}
-	}
+	},
+	{
+                "type" : "company",
+                "name" : "ABZV",
+                "description": "ABZV supports the development of Datawrapper, the best open source data visualization software. We serve above 6 million chart views per month.",
+                "id" : "abzv",
+                "link" : "http://www.datawrapper.de",
+                "twitter" : "https://twitter.com/datawrapper",
+                "img": "images/abzv.png",
+                "members" : ["mirko"],
+                "geo" : {
+                        "lon": 7.098207,
+                        "lat": 50.73743
+                }
+        },
+        {
+                "type" : "company",
+                "name" : "UNDP",
+                "description": "Journalism++ did a week-long workshop with young activists and journalists as part of the Youth Sleuth program by UNDP.",
+                "id" : "undp",
+                "img": "images/undp.png",
+                "members" : ["nkb", "pirhoo"],
+                "geo" : {
+                        "lon": 20.462222,
+                        "lat": 44.820556
+                }
+        },
+        {
+                "type" : "company",
+                "name" : "Tamedia",
+                "description": "Journalism++ trains Tamedia journalists of all backgrounds and makes them proficient in all things data.",
+                "id" : "tamedia",
+                "img": "images/tamedia.png",
+                "members" : ["nkb", "pirhoo", "mirko"],
+                "geo" : {
+                        "lon": 7.444608,
+                        "lat": 46.947922
+                }
+        }
 ]

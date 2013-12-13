@@ -626,7 +626,7 @@ network.Map = (function(_super) {
     height = this.height * 0.3;
     return this.uis.panel.css({
       height: height,
-      width: this.width + 4,
+      width: this.width + 5,
       top: -height - 3
     });
   };
@@ -951,7 +951,7 @@ network.Map = (function(_super) {
       bounds = this.getBoundingBox();
       hscale = this.scale * this.width / (bounds[1][0] - bounds[0][0]);
       vscale = this.scale * this.height / (bounds[1][1] - bounds[0][1]);
-      scale = Math.min(hscale, vscale);
+      scale = Math.min(hscale, vscale) * .95;
       center = this.projection.invert([(bounds[1][0] + bounds[0][0]) / 2, (bounds[1][1] + bounds[0][1]) / 2]);
       center = [center[0], center[1] - 30];
       this.scale = scale;

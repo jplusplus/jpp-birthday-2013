@@ -93,7 +93,7 @@ class network.Map extends Widget
 			hscale  = 150 * @width  / (bounds[1][0] - bounds[0][0])
 			vscale  = 150 * @height / (bounds[1][1] - bounds[0][1])
 			scale   = Math.min(hscale, vscale)
-			@scale  = scale 
+			@scale  = scale
 			center = @projection.invert([(bounds[1][0] + bounds[0][0])/2, (bounds[1][1] + bounds[0][1])/2])
 			@projection
 				.translate([(@width) / 2 , (@height) / 2])
